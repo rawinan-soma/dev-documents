@@ -1,0 +1,126 @@
+@startuml occeval
+left to right direction
+skinparam actorStyle awesome
+:จป.สปก.: as S 
+:admin DDC: as A
+:admin Region: as R
+:admin Province: as P
+
+package Account_Management {
+  (ลงทะเบียน) as A1
+  (เข้าสู่ระบบ) as A2
+  (เข้าสู่ระบบ สปก.) as A3
+  (ออกจากระบบ) as A4
+  (อนุมัติการลงทะเบียน) as A5
+  (reset password) as A6
+  (แก้ไขข้อมูล สปก.) as A7
+  (ลบข้อมูล สปก.) as A8
+  (เพิ่ม admin ระดับรอง) as A9
+  (ตรวจสอบการสมัคร) as A10
+}
+
+S --> A1
+S --> A2
+S --> A3
+S --> A4
+S --> A6
+S --> A7
+
+A -up-> A2
+A -up-> A4
+A -up-> A8
+A -up-> A6
+A -up-> A9
+A -up-> A5
+A -up-> A7
+A -up-> A10
+
+R -down-> A2
+R -down-> A4
+R -down-> A6
+R -down-> A5
+R -down-> A10
+
+P -up-> A2
+P -up-> A4
+P -up-> A6
+P -up-> A7
+P -up-> A10
+
+A1 .> A5 : <<include>>
+
+
+newpage
+
+left to right direction
+skinparam actorStyle awesome
+:จป.สปก.: as S 
+:admin DDC: as A
+package adminRegion {
+  :admin Region[อนามัย, จิต]: as R
+  :admin Region[สคร.]: as RO
+}
+
+:admin Province: as P
+
+package Evalution {
+  (ยืนยันการเข้าร่วมโครงการ) as E1
+  (ทำแบบประเมินตนเอง) as E2
+  (แนบไฟล์หลักฐาน) as E3
+  (แก้ไขแบบประเมินตนเอง) as E4
+  (แก้ไขหลักฐาน) as E5
+  (ประเมินสปก.) as E6
+  (ยืนยันผลการประเมินของ สปก.) as E7
+  (reject ผลการประเมินของ สปก.) as E8
+}
+
+S --> E1
+S --> E2
+S --> E3
+S --> E4
+S -->E5
+
+RO --> E6
+RO --> E7
+RO --> E8
+
+R --> E6
+
+E6 .up.> E7 : <<extends>>
+E6 .up.> E8 : <<extends>>
+E8 .up.> E5 : <<include>>
+E8 .up.> E4 : <<include>>
+
+newpage
+
+left to right direction
+skinparam actorStyle awesome
+:จป.สปก.: as S 
+:admin DDC: as A
+:admin Region: as R
+:admin Province: as P
+
+package Reports {
+  (Dashboard?) as R1
+  (ดูผลคะแนนของสปก. ในปีปัจจุบันและย้อนหลัง) as R2
+  (ดู report ผลคะแนนล่าสุดของตนเอง) as R3
+  (ดู report ผลคะแนนย้อนหลังของตนเอง) as R4
+  (สรุปประจำปี มอบโล่) as R5
+}
+
+S -up-> R3
+S -up-> R4
+
+A -up-> R5
+A -up-> R2
+A -up-> R1
+
+R -down-> R1
+
+P -down-> R1
+P -down-> R2
+
+
+
+
+@enduml
