@@ -1,0 +1,64 @@
+Table workplaces {
+  id int [pk]
+  workplace_type int
+  name_th varchar
+  name_eng varchar
+  workplace_id varchar
+  industry_type varchar
+  address varchar
+  soi varchar
+  road varchar
+  subdistrict varchar
+  district varchar
+  province varchar
+  zipcode int
+  phone varchar
+  fax varchar
+}
+
+Table enrolls {
+  id int [pk, increment]
+  enroll_date datetime [default: `now()`]
+  workplace_id int
+  employee_th_m int
+  employee_mm_m int
+  employee_kh_m int
+  employee_la_m int
+  employee_vn_m int
+  employee_cn_m int
+  employee_ph_m int
+  employee_jp_m int
+  employee_in_m int
+  employee_th_f int
+  employee_mm_f int
+  employee_kh_f int
+  employee_la_f int
+  employee_vn_f int
+  employee_cn_f int
+  employee_ph_f int
+  employee_jp_f int
+  employee_in_f int
+  standard_HC bool
+  standard_SAN bool
+  standard_SANP bool
+  standard_wellness bool
+  standard_safety bool
+  standard_TIS18001 bool
+  standard_ISO45001 bool
+  standard_ISO14001 bool
+  standard_zero bool
+  standard_5S bool
+  standard_HAS bool
+  standard_other varchar
+  safety_prefix varchar
+  safety_fname varchar
+  safety_lname varchar
+  safety_position varchar
+  safety_phone varchar
+  safety_fax varchar
+  safety_email varchar
+  safety_line varchar
+
+}
+
+Ref: workplaces.id < enrolls.workplace_id

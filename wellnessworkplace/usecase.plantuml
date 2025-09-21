@@ -3,7 +3,10 @@ left to right direction
 skinparam actorStyle awesome
 :จป.สปก.: as S 
 :admin DDC: as A
-:admin Region: as R
+package adminRegion {
+  :admin Region[อนามัย, จิต]: as R
+  :admin Region[สคร.]: as RO
+}
 :admin Province: as P
 
 package Account_Management {
@@ -35,11 +38,16 @@ A -up-> A5
 A -up-> A7
 A -up-> A10
 
+RO -down-> A2
+RO -down-> A4
+RO -down-> A6
+RO -down-> A5
+RO -down-> A10
+
 R -down-> A2
 R -down-> A4
 R -down-> A6
-R -down-> A5
-R -down-> A10
+
 
 P -up-> A2
 P -up-> A4
