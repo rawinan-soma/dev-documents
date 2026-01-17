@@ -1,25 +1,57 @@
+Table admins {
+  id int [unique,pk]
+  
+  email string [unique] 
+  fname varchar
+  lname varchar
+  account_id int [ref: - accounts.id]
+}
+
+Table evaluators {
+  id int [unique,pk]
+  
+  email string [unique] 
+  role varchar
+  fname varchar
+  lname varchar
+  account_id int [ref: - accounts.id]
+}
+
+Table ssj {
+  id int [unique, pk]
+  
+  email varchar
+  fname varchar
+  lname varchar
+  province integer
+  account_id int [ref: - accounts.id]
+}
+
 Table workplaces {
-  id int [pk]
+  id int [unique, pk]
+  workplace_id varchar
   workplace_type int
   name_th varchar
   name_eng varchar
-  workplace_id varchar
-  industry_type varchar
+  tsic varchar
   address varchar
   soi varchar
   road varchar
   subdistrict varchar
   district varchar
-  province varchar
+  province int
   zipcode int
   phone varchar
   fax varchar
+  approve bool
+  ssj_id int [ref: > ssj.id]
+  account_id int [ref: - accounts.id]
 }
 
 Table enrolls {
   id int [pk, increment]
   enroll_date datetime [default: `now()`]
-  workplace_id int
+  workplace_id int [ref: > workplaces.id]
   employee_th_m int
   employee_mm_m int
   employee_kh_m int
@@ -58,7 +90,15 @@ Table enrolls {
   safety_fax varchar
   safety_email varchar
   safety_line varchar
-
+  eval_doh int [ref: > evaluators.id]
+  eval_mental int [ref: > evaluators.id]
+  eval_odpc int [ref: > evaluators.id]
 }
 
-Ref: workplaces.id < enrolls.workplace_id
+Table accounts {
+  id int [pk, increment]
+  username varchar
+  password varchar
+  type varchar
+  auth_id int
+}

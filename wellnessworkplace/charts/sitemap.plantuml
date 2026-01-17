@@ -1,0 +1,19 @@
+@startuml sitemap
+  [Home] --> [Login]
+  [Login] --> ResetPassword
+  
+  package Users {
+    [Home] --> [Register]
+    [Login] --> [Enroll]
+    [Enroll] --> [Eval]
+    [Login] --> [Eval]
+  }
+
+  package DOED {
+    [Login] --> [UserList]
+    [UserList] --> Approval
+    [UserList] --> DeleteUser
+    [UserList] --> EditUser
+  }
+
+@enduml

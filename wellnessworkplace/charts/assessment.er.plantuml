@@ -1,0 +1,56 @@
+@startchen
+left to right direction
+
+entity Enrolls {
+}
+entity Assessment_details {
+}
+entity Questions {
+}
+entity Assessment_answers {
+}
+relationship Contains {
+}
+relationship Makes {
+}
+relationship Has {
+}
+entity Evaluators {
+}
+relationship Review {
+}
+relationship Decide {
+}
+relationship Write {
+}
+entity Review_logs {
+}
+relationship Generate {
+}
+entity Answer_logs {
+}
+
+
+Enrolls -1- Makes
+Assessment_details -1- Makes
+Questions -M- Contains
+Contains -1- Assessment_answers
+Assessment_details -1- Has
+Has -1- Assessment_answers
+Evaluators -1- Review
+Review -M- Assessment_answers
+Evaluators -1- Decide
+Decide -M- Assessment_details
+Assessment_details -1- Write
+Write -M- Review_logs
+Assessment_answers -1- Generate
+Generate -1- Answer_logs
+
+
+
+
+
+
+
+@endchen
+

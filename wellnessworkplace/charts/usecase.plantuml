@@ -1,11 +1,12 @@
 @startuml occeval
-' left to right direction
+left to right direction
 skinparam actorStyle awesome
-:จป.สปก.: as S 
-:admin DDC: as A
+skinparam defaultFontName "Kanit"
+:สปก.: as S 
+:Admin DOED: as A
 :ผู้ประเมิน[อนามัย, จิต]: as R
-:admin[สคร.]: as RO
-:admin Province: as P
+:Admin สคร.: as RO
+:Admin สสจ.: as P
 
 package Account_Management {
   (อนุมัติการลงทะเบียน) as A5
@@ -42,7 +43,6 @@ A -up-> A10
 RO -down-> A2
 RO -down-> A4
 RO -down-> A6
-RO -down-> A5
 RO -down-> A10
 
 R -down-> A2
@@ -53,7 +53,7 @@ R -down-> A6
 P -up-> A2
 P -up-> A4
 P -up-> A6
-P -up-> A7
+
 P -up-> A10
 
 A1 .> A5 : <<include>>
@@ -63,11 +63,12 @@ newpage
 
 left to right direction
 skinparam actorStyle awesome
-:จป.สปก.: as S 
-:admin DDC: as A
+skinparam defaultFontName "Kanit"
+:สปก.: as S 
+:Admin DOED: as A
 :ผู้ประเมิน[อนามัย, จิต]: as R
-:admin[สคร.]: as RO
-:admin Province: as P
+:Admin สคร.: as RO
+:Admin สสจ.: as P
 
 package Evalution {
   (ยืนยันการเข้าร่วมโครงการ) as E1
@@ -101,11 +102,12 @@ newpage
 
 left to right direction
 skinparam actorStyle awesome
-:จป.สปก.: as S 
-:admin DDC: as A
+skinparam defaultFontName "Kanit"
+:สปก.: as S 
+:Admin DOED: as A
 :ผู้ประเมิน[อนามัย, จิต]: as R
-:admin[สคร.]: as RO
-:admin Province: as P
+:Admin สคร.: as RO
+:Admin สสจ.: as P
 
 package Reports {
   (Dashboard?) as R1

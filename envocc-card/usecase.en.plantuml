@@ -1,0 +1,140 @@
+@startuml envocc-card
+skinparam actorStyle awesome
+skinparam DefaultFontName "kanit"
+left to right direction
+:Unit Admin: as UA
+:User: as U
+:Prov/Dep Admin: as PDA
+' :บุคคลทั่วไป: as P
+
+package Basic_Usage {
+  (register) as B1
+  (login) as B2
+  (logout) as B3
+}
+
+package Account_Management {
+  (verify registration) as A1
+  (add new admin) as A2
+  (delete admin) as A3
+  (edit profile) as A4
+}
+
+
+UA --> B2
+UA --> B3
+UA --> A1
+UA --> A4
+
+
+PDA --> B2
+PDA --> B3
+PDA --> A2
+PDA --> A3
+PDA --> A4
+
+U -up-> B1
+U -up-> B2
+U -up-> B3
+U -up-> A4
+
+
+newpage
+skinparam actorStyle awesome
+skinparam DefaultFontName "kanit"
+left to right direction
+' :Unit Admin: as UA
+' :Users: as U
+:Prov/Dep Admin: as PDA
+' :บุคคลทั่วไป: as P
+
+package Unit_Management {
+  (add new organization) as UM1
+  (edit organization metadata) as UM2
+  (delete organization) as UM3
+  (add new signature file) as UM4
+  (add new organization) as UM5
+  (edit signature file) as UM6
+  (edit seal file) as UM7
+}
+
+PDA --> UM1
+PDA --> UM2
+PDA --> UM3
+PDA --> UM4
+PDA --> UM5
+PDA --> UM6
+PDA --> UM7
+
+
+newpage
+
+skinparam actorStyle awesome
+skinparam DefaultFontName "kanit"
+left to right direction
+:Unit Admin: as UA
+:User: as U
+:Prov/Dep Admin: as PDA
+' :บุคคลทั่วไป: as P
+
+package Card_Request {
+  
+  (upload photo) as C2
+  (save ID card request file) as C3
+  (upload ID card request file) as C4
+  (save experience document) as C5
+  (upload exprience docuement) as C6
+  (upload goverment issued card) as C15
+  (edit document) as C7
+  (verify document) as C8
+  (reject document) as C9
+  (choose signature methods) as C10
+  (choose effective date) as C11
+  (print ID card) as C12
+  (upload copy of ID card) as C13
+  (setting QR code password) as C14
+}
+
+
+U --> C2
+U --> C3
+
+U --> C5
+
+U --> C7
+U --> C14
+U --> C13
+
+UA -up-> C4
+UA -up-> C6
+UA -up-> C7
+UA -up-> C15
+
+PDA -up-> C10
+PDA -up-> C11
+PDA -up-> C12
+PDA -up-> C8
+PDA -up-> C9
+
+
+
+newpage
+
+skinparam actorStyle awesome
+skinparam DefaultFontName "kanit"
+left to right direction
+' :Unit Admin: as UA
+:User: as U
+' :Prov/Dep Admin: as PDA
+:Publics: as P
+
+package Card_View {
+  (verify card via webview) as V1
+  (verify card via QR code) as V2
+}
+
+U --> V1
+U --> V2
+P --> V2
+
+@enduml

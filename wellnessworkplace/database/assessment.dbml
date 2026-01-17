@@ -1,0 +1,55 @@
+Enum AssessmentStatus {
+  started [note: "สปก เริ่มประเมิน"]
+  reviewed [note: "สคร/ผู้ประเมิน approve"]
+  rejected [note: "สคร/ผู้ประเมิน reject"]
+  confirmed [note: "สปกยืนยัน"]
+}
+
+Table Covers {
+  id int [pk, increment]
+  enroll_id int [ref: > Enrolls.id]
+  start_date datetime 
+}
+Table CoverLogs {
+  id int [pk, increment]
+  cover_id int [ref: > Covers.id]
+  status AssessmentStatus
+  eval_id int
+  update_date datetime
+}
+
+Table Enrolls {
+  id int [pk, increment]
+  eval_doh int
+  eval_odpc int
+  eval_mental int
+}
+
+Table Questions {
+  id int [pk, increment]
+  question_text string
+  choice_1 string
+  choice_2 string
+  choice_3 string
+  standard string
+}
+
+Table Answers {
+  id int [pk, increment]
+  question_id int [ref: > Questions.id]
+  cover_id int [ref: - Covers.id]
+  fileurl string
+  selected_choice int
+}
+
+
+
+Table AnswerLogs {
+  id int [pk, increment]
+  answer_id int [ref: > Answers.id]
+  status AssessmentStatus
+  description string
+  update_date datetime
+  eval_id int
+}
+

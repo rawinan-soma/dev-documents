@@ -1,0 +1,43 @@
+@startuml product_description
+skinparam DefaultFontName "kanit"
+skinparam DefaultFontSize 24
+|#AntiqueWhite|U|สปก.
+start
+:กรอกข้อมูลสปก. ในระบบ;
+note left: ที่ตั้ง, เลขรหัส, ประเภทกิจการ, ...
+:ลงทะเบียน;
+note left: notification?
+
+|#OrangeRed|DOED|Admin DOED
+:อนุมัติการลงทะเบียน;
+|U|
+:กรอกข้อมูลของสปก. เพิ่มเติม;
+note left: ข้อมูลพนักงาน, จป.
+fork
+:ประเมินตนเอง;
+fork again
+:Upload เอกสารตามแบบประเมิน;
+end merge
+|#SkyBlue|A|Admin สคร.
+|A|
+fork 
+:ตรวจสอบผลการประเมินตนเอง;
+repeat
+backward: แก้ไขผลการประเมินและจัดการเอกสาร;
+repeat while (ผลการประเมิน OK?) is (no)
+->yes;
+:ยืนยันผล;
+fork again
+|#PaleGreen|Eva|ผู้ประเมิน[อนามัย,จิต]
+:ตรวจสอบผลการประเมินตนเอง;
+repeat
+backward: แก้ไขผลการประเมินและจัดการเอกสาร;
+repeat while (ผลการประเมิน OK?) is (no)
+->yes;
+:ยืนยันผล;
+|A|
+end fork
+|#OrangeRed|DOED|Admin DOED
+:สรุปผลการประเมิน;
+end
+' |#WhiteSmoke|P|Admin สสจ.

@@ -1,0 +1,34 @@
+@startuml overall_activity
+skinparam DefaultFontName "kanit"
+skinparam DefaultFontSize 24
+|#AntiqueWhite|U|User
+start
+:กรอกข้อมูลในระบบ;
+note left: ใบคำร้อง, แบบประสบการณ์
+:ลงทะเบียน;
+|#SkyBlue|A|Unit admin
+:อนุมัติการลงทะเบียน;
+|U|
+:Upload รูปภาพ;
+:พิมพ์เอกสาร;
+note left: ใบคำร้อง, แบบประสบการณ์
+:เสนอหัวหน้ารับรอง;
+|A|
+:เสนอผู้บริหารหน่วยบริการรับรอง;
+:Upload file; 
+note left:ใบคำร้องขอ,แบบประสบการณ์,บัตรประจำตัวจนท.รัฐ
+|#PaleGreen|P|Prov/Dev admin
+:ตรวจสอบเอกสารที่แนบ;
+:เลือกวิธีการลงนาม;
+note left: ลงนามด้วยมือ,ลงนามด้วย Electronics
+:ระบุวันที่ลงนาม;
+:พิมพ์บัตร;
+:ส่งบัตรไปหาผู้ร้องขอ;
+|U|
+:ได้รับบัตร;
+:ลงนามรับรองบัตร;
+:แนบสำเนาบัตรลงในระบบ;
+|A|
+:ตรวจสอบสำเนาบัตร;
+stop
+@enduml

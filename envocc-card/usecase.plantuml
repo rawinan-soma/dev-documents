@@ -1,0 +1,140 @@
+@startuml envocc-card
+skinparam actorStyle awesome
+skinparam DefaultFontName "kanit"
+left to right direction
+:Unit Admin: as UA
+:User: as U
+:Prov/Dep Admin: as PDA
+' :บุคคลทั่วไป: as P
+
+package Basic_Usage {
+  (ลงทะเบียน กรอกเอกสาร) as B1
+  (เข้าสู่ระบบ) as B2
+  (ออกจากระบบ) as B3
+}
+
+package Account_Management {
+  (อนุมัติการลงทะเบียน) as A1
+  (เพิ่ม Admin ระดับรองลงมา) as A2
+  (ลบ Admin) as A3
+  (แก้ไขข้อมูลส่วนตัว) as A4
+}
+
+
+UA --> B2
+UA --> B3
+UA --> A1
+UA --> A4
+
+
+PDA --> B2
+PDA --> B3
+PDA --> A2
+PDA --> A3
+PDA --> A4
+
+U -up-> B1
+U -up-> B2
+U -up-> B3
+U -up-> A4
+
+
+newpage
+skinparam actorStyle awesome
+skinparam DefaultFontName "kanit"
+left to right direction
+' :Unit Admin: as UA
+' :Users: as U
+:Prov/Dep Admin: as PDA
+' :บุคคลทั่วไป: as P
+
+package Unit_Management {
+  (เพิ่มหน่วยบริการ) as UM1
+  (แก้ไขข้อมูลหน่วยบริการ) as UM2
+  (ลบหน่วยบริการ) as UM3
+  (เพิ่มลายเซ็น Electronic ในระบบ) as UM4
+  (เพิ่มตราประทับของหน่วยงาน) as UM5
+  (แก้ไขลายเซ็นของหน่วยงาน) as UM6
+  (แก้ไขตราประทับของหน่วยงาน) as UM7
+}
+
+PDA --> UM1
+PDA --> UM2
+PDA --> UM3
+PDA --> UM4
+PDA --> UM5
+PDA --> UM6
+PDA --> UM7
+
+
+newpage
+
+skinparam actorStyle awesome
+skinparam DefaultFontName "kanit"
+left to right direction
+:Unit Admin: as UA
+:User: as U
+:Prov/Dep Admin: as PDA
+' :บุคคลทั่วไป: as P
+
+package Card_Request {
+  
+  (Upload ภาพถ่ายตนเอง) as C2
+  (พิมพ์เอกสารคำขอ) as C3
+  (Upload เอกสารคำขอ) as C4
+  (พิมพ์เอกสารประสบการณ์) as C5
+  (Upload เอกสารประสบการณ์) as C6
+  (Upload บัตรจนท.รัฐ) as C15
+  (แก้ไขเอกสาร) as C7
+  (ตรวจสอบเอกสาร) as C8
+  (สั่งแก้ไขเอกสาร) as C9
+  (เลือกวิธีการลงนาม) as C10
+  (เลือกวันที่อนุมัติ) as C11
+  (พิมพ์บัตรที่อนุมัติแล้ว) as C12
+  (Upload สำเนาบัตร) as C13
+  (ตั้งรหัส QR Code) as C14
+}
+
+
+U --> C2
+U --> C3
+
+U --> C5
+
+U --> C7
+U --> C14
+U --> C13
+
+UA -up-> C4
+UA -up-> C6
+UA -up-> C7
+UA -up-> C15
+
+PDA -up-> C10
+PDA -up-> C11
+PDA -up-> C12
+PDA -up-> C8
+PDA -up-> C9
+
+
+
+newpage
+
+skinparam actorStyle awesome
+skinparam DefaultFontName "kanit"
+left to right direction
+' :Unit Admin: as UA
+:User: as U
+' :Prov/Dep Admin: as PDA
+:บุคคลทั่วไป: as P
+
+package Card_View {
+  (ดูบัตรออนไลน์ ผ่านหน้าเว็บ) as V1
+  (ดูบัตรออนไลน์ผ่าน QR code) as V2
+}
+
+U --> V1
+U --> V2
+P --> V2
+
+@enduml

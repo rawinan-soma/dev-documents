@@ -1,0 +1,22 @@
+@startuml user_registration
+skinparam DefaultFontName "kanit"
+start
+:เข้าลงทะเบียนจากช่องทาง;
+:กรอกข้อมูลตามที่กำหนด;
+:คลิก ยืนยันการลงทะเบียน;
+switch (ลงทะเบียน)
+case (ลงทะเบียนซ้ำ)
+:ยกเลิกการลงทะเบียน;
+stop
+case (ไม่มีข้อผิดพลาด)
+:ดำเนินการต่อ;
+case (กรอกข้อมูลผิดพลาด)
+repeat
+
+repeat while (แก้ไขข้อมูล) is (ยังไม่ถูกต้อง)
+->ถูกต้องแล้ว;
+endswitch
+:ลงทะเบียนสำเร็จ;
+
+end
+@enduml

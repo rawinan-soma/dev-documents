@@ -1,0 +1,5 @@
+Table adminDDC {
+  id int [pk, increment]
+  username varchar
+  password varchar
+}

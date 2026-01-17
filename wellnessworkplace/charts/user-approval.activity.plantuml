@@ -1,0 +1,18 @@
+@startuml user_approve
+skinparam DefaultFontName "kanit"
+start
+:ได้รับ notification;
+if (เข้าสู่ระบบ?) then (yes)
+  :ดำเนินการต่อ;
+else (no) 
+  :เข้าสู่ระบบ;
+endif
+
+switch (ตรวจสอบการลงทะเบียน)
+case (อนุมัติการลงทะเบียน)
+:ดำเนินการต่อ;
+case (ไม่อนุมัติ)
+:ลบข้อมูลออกจากฐานข้อมูล;
+endswitch
+end
+@enduml

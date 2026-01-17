@@ -1,0 +1,31 @@
+@startuml overall_activity
+skinparam DefaultFontName "kanit"
+skinparam DefaultFontSize 24
+|#AntiqueWhite|U|User
+start
+:Fill register form;
+|#SkyBlue|A|Unit admin
+:verify register;
+|U|
+:upload photo;
+:print documents;
+note left: request form, experience document
+:sign by section head;
+|A|
+:sign by unit director;
+:Upload file; 
+note left:signed request form, experience document,goverment issued card
+|#PaleGreen|P|Prov/Dev admin
+:validate uploaded documents;
+:choose signing methods;
+note left: Manual,Electronics
+:choose effective date;
+:print ID card;
+:sending to requested user;
+|U|
+:sign own ID card;
+:upload copy of ID card;
+|A|
+:valiate the copied;
+stop
+@enduml
